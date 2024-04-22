@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.newbee.launcher_lib.R;
-import com.newbee.launcher_lib.app.NrMywApp;
+import com.newbee.launcher_lib.app.BaseLauncherApp;
 
 
 public class GetSystemIconUtil {
@@ -34,10 +34,10 @@ public class GetSystemIconUtil {
         try {
             if(pckStr.equals("cm.aptoidetv.pt")||appName.toLowerCase().contains("aptoide")){
                 showIV.setImageResource(R.drawable.icon_myw_store);
-                showTV.setText(NrMywApp.getRsString(R.string.myw_app_store));
+                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_app_store));
             }else if(pckStr.equals("com.xiaobaifile.tv")){
                 showIV.setImageResource(R.drawable.icon_myw_file);
-                showTV.setText(NrMywApp.getRsString(R.string.myw_file));
+                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_file));
             }else if(appName.equals("Opera")){
                 showIV.setImageDrawable(getIconFromPackageName(pckStr));
                 showTV.setText("Opera Browser");
@@ -61,11 +61,11 @@ public class GetSystemIconUtil {
 
 
     private Drawable getIconFromPackageName(String packageName) {
-        PackageManager pm = NrMywApp.getContext().getPackageManager();
+        PackageManager pm =BaseLauncherApp.getContext().getPackageManager();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
             try {
                 PackageInfo pi = pm.getPackageInfo(packageName, 0);
-                Context otherAppCtx = NrMywApp.getContext().createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY);
+                Context otherAppCtx = BaseLauncherApp.getContext().createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY);
                 int displayMetrics[] = {DisplayMetrics.DENSITY_XXXHIGH, DisplayMetrics.DENSITY_XXHIGH, DisplayMetrics.DENSITY_XHIGH, DisplayMetrics.DENSITY_HIGH, DisplayMetrics.DENSITY_TV};
                 for (int displayMetric : displayMetrics) {
                     try {

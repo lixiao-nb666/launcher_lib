@@ -60,14 +60,14 @@
         </activity>
 
 
-        <receiver
-            android:name="com.newbee.launcher_lib.receiver.NrMyWOtherApkCloseReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.newbee.systemkeylisten.service.close" />
-                <action android:name="com.newbee.andserver.service.close" />
-            </intent-filter>
-        </receiver>
+<!--        <receiver-->
+<!--            android:name="com.newbee.launcher_lib.receiver.NrMyWOtherApkCloseReceiver"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.newbee.systemkeylisten.service.close" />-->
+<!--                <action android:name="com.newbee.andserver.service.close" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
 
     </application>
 

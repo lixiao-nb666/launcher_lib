@@ -2,17 +2,17 @@ package com.newbee.launcher_lib.share;
 
 
 
-import android.util.Log;
+
 
 import com.newbee.data_sava_lib.share.BaseShare;
-import com.newbee.launcher_lib.app.NrMywApp;
+import com.newbee.launcher_lib.app.BaseLauncherApp;
 
 
 public class NrmywShare extends BaseShare {
     private static NrmywShare nrmywShare;
 
     private NrmywShare() {
-        super(NrMywApp.getContext());
+        super(BaseLauncherApp.getContext());
     }
 
     public static NrmywShare getInstance(){
@@ -29,7 +29,7 @@ public class NrmywShare extends BaseShare {
     private final String showIndexShareStr= "showIndex";
     public void putShowIndex(int index){
         putString(showIndexShareStr,index+"");
-        Log.i("kankandaodishiji:","kankandaodishiji111:"+index);
+
     }
 
     public int getShowIndex(){
@@ -38,7 +38,6 @@ public class NrmywShare extends BaseShare {
             int showIndex=Integer.valueOf(showIndexStr);
             return showIndex;
         }catch (Exception e){
-            Log.i("kankandaodishiji:","kankandaodishiji222:"+e.toString());
             return -1;
         }
 

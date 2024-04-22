@@ -8,7 +8,7 @@ import android.os.Build;
 import android.util.Log;
 
 
-import com.newbee.launcher_lib.app.NrMywApp;
+import com.newbee.launcher_lib.app.BaseLauncherApp;
 import com.newbee.launcher_lib.bean.RecentAppShowBean;
 import com.newbee.launcher_lib.bean.RecentServiceShowBean;
 import com.newbee.launcher_lib.util.StopOtherApkUtil;
@@ -39,7 +39,7 @@ public class AllAppManager {
 
     private ActivityManager getActivityManager() {
         if (null == activityManager) {
-            activityManager = (ActivityManager) NrMywApp.getContext().getSystemService(Context.ACTIVITY_SERVICE);
+            activityManager = (ActivityManager) BaseLauncherApp.getContext().getSystemService(Context.ACTIVITY_SERVICE);
         }
         return activityManager;
     }
@@ -47,7 +47,7 @@ public class AllAppManager {
     public List<RecentAppShowBean> getRecentAppShowList(List<String> canNotCleanPckList) {
         try {
             List<RecentAppShowBean> appInfoBeanList = new ArrayList<>();
-            PackageManager pm = NrMywApp.getContext().getPackageManager();
+            PackageManager pm = BaseLauncherApp.getContext().getPackageManager();
             List<ActivityManager.RunningTaskInfo> runActivityList = getActivityManager().getRunningTasks(1000);
             for (int i = 0; i < runActivityList.size(); i++) {
                 ActivityManager.RunningTaskInfo runActivity = runActivityList.get(i);
@@ -101,7 +101,7 @@ public class AllAppManager {
         if (null == infoList || infoList.size() == 0) {
             return null;
         }
-        PackageManager pm = NrMywApp.getContext().getPackageManager();
+        PackageManager pm = BaseLauncherApp.getContext().getPackageManager();
         List<RecentServiceShowBean> recentServiceShowBeanList = new ArrayList<>();
         for (int i = 0; i < infoList.size(); ++i) {
             ActivityManager.RunningAppProcessInfo appProcessInfo = infoList.get(i);
