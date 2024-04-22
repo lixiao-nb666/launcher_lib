@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyW 桌面</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">本设备最终解释权为:MyW</string>
+
+    <string name="myw_file">MyW 文件</string>
+    <string name="myw_app_store">MyW 应用市场</string>
+
+    <string name="recent_activity_do_title">左键：清空对应的任务,右键：切换页面</string>
+    <string name="recent_service_do_title">右键：清空对应的任务,左键：切换页面</string>
+
+    <string name="recent_clear_all">清空全部</string>
+
+    <string name="process">进程</string>
+
+    <string name="service">服务</string>
+</resources>

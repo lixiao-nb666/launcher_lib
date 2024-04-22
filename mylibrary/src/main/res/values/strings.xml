@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MyW Launcher</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">The final interpretation right of this equipment is :MyW</string>
+    <string name="myw_file">MyW File</string>
+    <string name="myw_app_store">MyW APP Store</string>
+
+    <string name="recent_activity_do_title">Left click: clear the corresponding task, right click: switch pages</string>
+    <string name="recent_service_do_title">right click: clear the corresponding task, left click: switch pages</string>
+
+    <string name="recent_clear_all">Clear All</string>
+
+    <string name="process">process</string>
+
+    <string name="service">service</string>
+</resources>

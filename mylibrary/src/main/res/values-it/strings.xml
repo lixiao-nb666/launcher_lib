@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyW tavolo</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">L’autorità competente per l’interpretazione definitiva di tale apparecchiatura è il fabbricante:MyW</string>
+
+    <string name="myw_file">MyW documenti</string>
+    <string name="myw_app_store">MyW applicazione</string>
+
+    <string name="recent_activity_do_title">Tasto sinistro: compito corrispondente allo svuotamento; Tasto destro: cambio di pagina</string>
+    <string name="recent_service_do_title">Tasto destro: togliere il tasto corrispondente; Tasto sinistro: cambiare pagina</string>
+
+    <string name="recent_clear_all">Vuc tutti</string>
+
+    <string name="process">Il processo di</string>
+
+    <string name="service">servizi</string>
+</resources>

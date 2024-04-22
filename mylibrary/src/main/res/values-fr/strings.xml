@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyW Ordinateurs de bureau</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">L\'interprétation finale de cet équipement est: MyW</string>
+    <string name="myw_file">MyW Fichier:</string>
+    <string name="myw_app_store">MyW APP Magasin</string>
+
+    <string name="recent_activity_do_title">Bouton gauche: vider la tâche correspondante, bouton droit: changer de page</string>
+    <string name="recent_service_do_title">Bouton droit: vider la tâche correspondante, bouton gauche: changer de page</string>
+
+    <string name="recent_clear_all">Vider tout</string>
+
+    <string name="process">processus</string>
+
+    <string name="service">services</string>
+
+</resources>

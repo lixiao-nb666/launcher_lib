@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/b_main"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_title"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:textColor="@color/text_translation_over_color"-->
+<!--            android:visibility="gone"-->
+<!--            android:textSize="70px"-->
+<!--            android:text="@string/product_name"/>-->
+
+
+        <ImageView
+            android:layout_width="90px"
+            android:layout_height="40px"
+            android:scaleType="fitCenter"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="136px"
+            android:layout_marginBottom="16px"
+            android:visibility="gone"
+            android:src="@drawable/myw_logo"/>
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+    </RelativeLayout>
+
+    <include
+        layout="@layout/launcher_layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/tv_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="33px"
+            android:textColor="@color/text_translation_over_color"
+            android:visibility="gone"
+            android:text="@string/product_name_other"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

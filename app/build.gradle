@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.newbee.launcher'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.newbee.launcher"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../keystore/nrmyw1_SystemSignature.jks')
+            storePassword 'nrmyw1'
+            keyAlias 'nrmyw1'
+            keyPassword 'nrmyw1'
+        }
+    }
+
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false //启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled true //是否启用zipAlign压缩
+            pseudoLocalesEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "nymyw_launcher-${variant.name}-${variant.versionName}.apk"
+                }
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.github.lixiao-nb666:build_lib:1.0.9'
+    implementation 'com.github.lixiao-nb666:system_applist_lib:2.0.0'
+    implementation 'com.github.lixiao-nb666:system_key_lib:1.0.5'
+    implementation 'com.github.lixiao-nb666:sava_data_lib:1.0.0'
+    implementation 'com.github.lixiao-nb666:gson_lib:1.0.0'
+    implementation project(path: ':mylibrary')
+}

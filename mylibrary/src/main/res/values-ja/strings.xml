@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyW デスクトップです</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">本装置の最終解釈権は:MyW</string>
+
+    <string name="myw_file">MyW 書類です</string>
+    <string name="myw_app_store">MyW APP マーケットです</string>
+
+
+    <string name="recent_activity_do_title">左クリック:タスクをクリア、右クリック:ページの切り替えです。</string>
+    <string name="recent_service_do_title">右クリック:タスクをクリア、左クリック:ページの切り替えです。</string>
+
+    <string name="recent_clear_all">すべてを空にします</string>
+
+    <string name="process">プロセスです</string>
+
+    <string name="service">サービスです</string>
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyW Tischplatte</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">Das gerät ist das endgültige auslegungssache:MyW</string>
+
+    <string name="myw_file">MyW papiere</string>
+    <string name="myw_app_store">MyW Applemarkt</string>
+
+    <string name="recent_activity_do_title">Linke taste: die aufgabe Leer machen, rechte taste: die seite wechseln</string>
+    <string name="recent_service_do_title">Rechte maustaste: die aufgabe leeren, linke maustaste: wechseln der seite</string>
+
+    <string name="recent_clear_all">Mach alles sauber</string>
+
+    <string name="process">Prozess</string>
+
+    <string name="service">Dienen</string>
+</resources>

@@ -1,0 +1,29 @@
+<resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style name="nrmyw_launcher_app_style" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowBackground">@mipmap/to_main_bg</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+<!--        <item name="android:windowFullscreen">true</item>-->
+    </style>
+
+
+
+</resources>

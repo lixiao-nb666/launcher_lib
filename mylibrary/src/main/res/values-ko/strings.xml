@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyW 데스크톱</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">이 장치에 대한 최종 해석권은:MyW</string>
+
+    <string name="myw_file">MyW 파일</string>
+    <string name="myw_app_store">MyW 응용 시장</string>
+
+    <string name="recent_activity_do_title">왼쪽 키:작업을 비우고, 오른쪽 키:페이지를 전환한다</string>
+    <string name="recent_service_do_title">오른쪽 키:작업을 비우고, 왼쪽 키:페이지를 전환한다</string>
+
+    <string name="recent_clear_all">모두 비우기</string>
+
+    <string name="process">프로세스</string>
+
+    <string name="service">서비스</string>
+</resources>

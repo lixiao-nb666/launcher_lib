@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyW O ecrã</string>
+    <string name="product_name">MyW</string>
+    <string name="product_name_other">O direito final de interpretação deste equipamento é:MyW</string>
+
+    <string name="myw_file">MyW arquivo</string>
+    <string name="myw_app_store">MyW APP Store</string>
+
+    <string name="recent_activity_do_title">Botão esquerdo: esvaziar a tarefa correspondente, botão direito: alternar página</string>
+    <string name="recent_service_do_title">Botão direito: esvaziar a tarefa correspondente, botão esquerdo: alternar página</string>
+
+    <string name="recent_clear_all">Esvaziar tudo</string>
+
+    <string name="process">processo</string>
+
+    <string name="service">serviços</string>
+</resources>

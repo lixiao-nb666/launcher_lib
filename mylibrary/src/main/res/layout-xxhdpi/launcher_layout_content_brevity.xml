@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:visibility="gone"
+    android:id="@+id/rl_brevity"
+    >
+
+
+    <ImageView
+        android:id="@+id/iv_to_left"
+        android:layout_width="160px"
+        android:layout_height="160px"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12px"
+        android:padding="30px"
+        android:alpha="0.9"
+        android:src="@drawable/item_to_left"/>
+
+    <ImageView
+        android:id="@+id/iv_to_right"
+        android:layout_width="160px"
+        android:layout_height="160px"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12px"
+        android:padding="30px"
+        android:alpha="0.9"
+        android:src="@drawable/item_to_right"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/iv_now"
+            android:layout_width="306px"
+            android:layout_height="306px"
+            android:scaleType="fitCenter"
+            android:background="@drawable/item_bj"
+            android:padding="20px"
+         />
+
+        <TextView
+            android:id="@+id/tv_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38px"
+            android:textSize="36px"
+            android:textColor="@color/text_translation_over_color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:alpha="0.65"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="240px"
+        android:layout_alignParentLeft="true">
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="224px"
+            android:layout_height="224px"
+            android:scaleType="fitCenter"
+            android:background="@drawable/item_bj"
+            android:padding="16px"
+            />
+
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34px"
+            android:textSize="30px"
+            android:textColor="@color/text_translation_over_color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:alpha="0.65"
+        android:layout_marginRight="240px"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="224px"
+            android:layout_height="224px"
+            android:scaleType="fitCenter"
+            android:background="@drawable/item_bj"
+            android:padding="16px"
+            />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34px"
+            android:textSize="30px"
+            android:textColor="@color/text_translation_over_color"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_pager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32px"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:alpha="0.6"
+        android:textColor="@color/white"/>
+</RelativeLayout>
