@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.newbee.launcher_lib.R;
 import com.newbee.launcher_lib.config.LauncherConfig;
+import com.newbee.launcher_lib.config.NowAllAppListConfig;
 import com.newbee.launcher_lib.util.image.GetSystemIconUtil;
 import com.newbee.system_applist_lib.systemapp.bean.SystemAppInfoBean;
 import java.util.ArrayList;
@@ -32,13 +33,11 @@ public class NrmywAdapter extends RecyclerView.Adapter {
     private List<SystemAppInfoBean> apps;
     private LayoutInflater layoutInflater;
     private ItemClick itemClick;
-
     private int w, h;
     private int llNeedW;
     private int iconW;
     private int textMTop;
     private int textSize;
-
     private boolean needReflect;
 
     public NrmywAdapter(Context context, ItemClick itemClick, int w, int h, boolean needReflect) {
@@ -66,9 +65,9 @@ public class NrmywAdapter extends RecyclerView.Adapter {
     public void setData(List<SystemAppInfoBean> apps) {
         if (apps == null) {
             this.apps = new ArrayList<>();
-            return;
+        }else {
+            this.apps = apps;
         }
-        this.apps = apps;
         notifyDataSetChanged();
     }
 
@@ -94,7 +93,7 @@ public class NrmywAdapter extends RecyclerView.Adapter {
 
         final ViewHodler viewHodler = (ViewHodler) holder;
         final SystemAppInfoBean app = apps.get(position);
-        GetSystemIconUtil.getInstance().setAppIconAndName(viewHodler.appIconIV,viewHodler.appNameTV,app.getName(),app.getPakeageName());
+        GetSystemIconUtil.getInstance().setAppIconAndName(viewHodler.appIconIV,viewHodler.appNameTV,app);
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

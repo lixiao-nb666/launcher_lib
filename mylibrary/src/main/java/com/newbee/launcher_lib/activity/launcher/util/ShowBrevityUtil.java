@@ -205,7 +205,7 @@ public class ShowBrevityUtil extends BaseShowUtil{
     }
 
     private void setShowIVAndTv(ImageView showIV,TextView showTV,SystemAppInfoBean appInfo){
-        GetSystemIconUtil.getInstance().setAppIconAndName(showIV,showTV,appInfo.getName(),appInfo.getPakeageName());
+        GetSystemIconUtil.getInstance().setAppIconAndName(showIV,showTV,appInfo);
     }
 
     private void showPager(){

@@ -29,8 +29,6 @@ import java.util.List;
 public abstract class BaseRecentAppListActivity extends BaseCompatActivity {
 
     public abstract List<String> getCanNotCleanPckList();
-
-
     private NoScrollViewPager vp;
     private List<BaseFragmen_v4> viewList = new ArrayList<>();
     private FragmentAdapter fragmentAdapter;
@@ -148,7 +146,6 @@ public abstract class BaseRecentAppListActivity extends BaseCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             return true;
         }
-
         return super.onKeyDown(keyCode, event);
     }
 

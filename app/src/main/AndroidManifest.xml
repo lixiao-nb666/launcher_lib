@@ -56,7 +56,21 @@
 
         <activity android:name=".activity.NewBeeRecentAppListActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:exported="true">
+
+<!--            <intent-filter android:priority="1">-->
+
+<!--                &lt;!&ndash; 自主添加调式 开始&ndash;&gt;-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--                &lt;!&ndash; 自主添加调式 结束&ndash;&gt;-->
+
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.HOME" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.MONKEY"/>-->
+<!--                <category android:name="android.intent.category.LAUNCHER_APP" />-->
+<!--            </intent-filter>-->
         </activity>
 
 

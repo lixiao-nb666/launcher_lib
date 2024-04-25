@@ -112,7 +112,7 @@ public class RecentAppListAdapter extends RecyclerView.Adapter {
 
         final ViewHodler viewHodler = (ViewHodler) holder;
         final RecentAppShowBean app = apps.get(position);
-        GetSystemIconUtil.getInstance().setAppIconAndName(viewHodler.appIconIV,viewHodler.showTV,app.getAppName(),app.getPckName());
+        GetSystemIconUtil.getInstance().setAppIconAndNameByAppList(viewHodler.appIconIV,viewHodler.showTV,app.getAppName(),app.getPckName());
         viewHodler.showTV.append("\n"+app.getNeedStartCls());
         viewHodler.idTV.setText("id : "+app.getTaskId());
         View.OnClickListener onClickListener = new View.OnClickListener() {

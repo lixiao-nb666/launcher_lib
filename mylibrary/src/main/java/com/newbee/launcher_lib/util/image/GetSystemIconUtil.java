@@ -7,12 +7,18 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.ArrayMap;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.newbee.launcher_lib.R;
 import com.newbee.launcher_lib.app.BaseLauncherApp;
+import com.newbee.launcher_lib.config.NowAllAppListConfig;
+import com.newbee.system_applist_lib.systemapp.bean.SystemAppInfoBean;
+
+import java.util.Map;
 
 
 public class GetSystemIconUtil {
@@ -30,34 +36,61 @@ public class GetSystemIconUtil {
         return getSystemIconUtil;
     }
 
-    public void setAppIconAndName(ImageView showIV,TextView showTV,String appName,String pckStr){
-        try {
-            if(pckStr.equals("cm.aptoidetv.pt")||appName.toLowerCase().contains("aptoide")){
-                showIV.setImageResource(R.drawable.icon_myw_store);
-                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_app_store));
-            }else if(pckStr.equals("com.xiaobaifile.tv")){
-                showIV.setImageResource(R.drawable.icon_myw_file);
-                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_file));
-            }else if(appName.equals("Opera")){
-                showIV.setImageDrawable(getIconFromPackageName(pckStr));
-                showTV.setText("Opera Browser");
+    public void close(){
+
+    }
+
+
+    public void setAppIconAndNameByAppList(ImageView showIV, TextView showTV, String appName,String pck){
+//        try {
+            SystemAppInfoBean appInfoBean= NowAllAppListConfig.getInstance().getNeedAppInfo(pck);
+            if(null==appInfoBean){
+                Log.i("kankan","kankanshenmeyixhabng:111");
+                showTV.setText(appName);
+                showIV.setImageDrawable(getIconFromPackageName(pck));
             }else {
-                showIV.setImageDrawable(getIconFromPackageName(pckStr));
-                showTV.setText(changeName(appName));
+                Log.i("kankan","kankanshenmeyixhabng:222"+appInfoBean);
+                setAppIconAndName(showIV,showTV,appInfoBean);
             }
+//        }catch (Exception e){
+//            Log.i("kankan","kankanshenmeyixhabng:"+e.toString());
+//        }
+    }
+
+
+    public void setAppIconAndName(ImageView showIV, TextView showTV, SystemAppInfoBean appInfo){
+        try {
+            showTV.setText(appInfo.getName());
+            if(appInfo.getIconRs()==0||appInfo.getIconRs()==-1){
+                showIV.setImageDrawable(getIconFromPackageName(appInfo.getPakeageName()));
+            }else {
+                showIV.setImageResource(appInfo.getIconRs());
+            }
+//            if(pckStr.equals("cm.aptoidetv.pt")||appName.toLowerCase().contains("aptoide")){
+//                showIV.setImageResource(R.drawable.icon_myw_store);
+//                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_app_store));
+//            }else if(pckStr.equals("com.xiaobaifile.tv")){
+//
+//                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_file));
+//            }else if(appName.equals("Opera")){
+//
+//                showTV.setText("Opera Browser");
+//            }else {
+//                showIV.setImageDrawable(getIconFromPackageName(pckStr));
+//            }
         }catch (Exception e){}
     }
 
-    private String changeName(String name){
-        if(name.contains(" TV")){
-            return name.replace(" TV","");
-        }else if(name.contains("TV ")){
-            return name.replace("TV ","");
-        }else if(name.contains("TV")){
-            return name.replace("TV","");
-        }
-        return name;
-    }
+//    private String changeName(String name){
+//        if(name.contains(" TV")){
+//            return name.replace(" TV","");
+//        }else if(name.contains("TV ")){
+//            return name.replace("TV ","");
+//        }else if(name.contains("TV")){
+//            return name.replace("TV","");
+//        }
+//        return name;
+//    }
 
 
     private Drawable getIconFromPackageName(String packageName) {

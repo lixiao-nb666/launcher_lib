@@ -5,7 +5,9 @@ package com.newbee.launcher_lib.app;
 import android.text.TextUtils;
 import com.newbee.bulid_lib.mybase.appliction.BaseApplication;
 import com.newbee.launcher_lib.BuildConfig;
+import com.newbee.launcher_lib.config.NowAllAppListConfig;
 import com.newbee.launcher_lib.util.CheckBuildGuideUtil;
+import com.newbee.launcher_lib.util.image.GetSystemIconUtil;
 import com.newbee.system_applist_lib.systemapp.StartOtherApkUtil;
 
 
@@ -45,6 +47,8 @@ public abstract class BaseLauncherApp extends BaseApplication {
 
     @Override
     protected void close() {
+        GetSystemIconUtil.getInstance().close();
+        NowAllAppListConfig.getInstance().close();
         closeNeedDo();
     }
 }

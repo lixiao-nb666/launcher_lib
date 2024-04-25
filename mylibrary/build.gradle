@@ -31,7 +31,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.github.lixiao-nb666:build_lib:1.0.9'
-    implementation 'com.github.lixiao-nb666:system_applist_lib:2.0.0'
+    implementation 'com.github.lixiao-nb666:system_applist_lib:2.0.1'
     implementation 'com.github.lixiao-nb666:system_key_lib:1.0.5'
     implementation 'com.github.lixiao-nb666:sava_data_lib:1.0.0'
     implementation 'com.github.lixiao-nb666:gson_lib:1.0.0'

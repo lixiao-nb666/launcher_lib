@@ -21,10 +21,9 @@ public class RecentAppShowBean implements Serializable {
     }
 
     public String getAppName() {
-        if(TextUtils.isEmpty(appName)){
+        if (TextUtils.isEmpty(appName)) {
             return pckName;
         }
-
         return appName;
     }
 

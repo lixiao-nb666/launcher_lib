@@ -112,7 +112,7 @@ public class RecentServiceListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHodler viewHodler = (ViewHodler) holder;
         final RecentServiceShowBean serviceShowBean=serviceShowBeanList.get(position);
-        GetSystemIconUtil.getInstance().setAppIconAndName(viewHodler.appIconIV,viewHodler.showTV,serviceShowBean.getAppName(),serviceShowBean.getPckName());
+        GetSystemIconUtil.getInstance().setAppIconAndNameByAppList(viewHodler.appIconIV,viewHodler.showTV,serviceShowBean.getAppName(),serviceShowBean.getPckName());
         viewHodler.showTV.append("\n"+serviceShowBean.getPckName());
         viewHodler.impTV.setText("pid : "+serviceShowBean.getPid());
         View.OnClickListener onClickListener = new View.OnClickListener() {

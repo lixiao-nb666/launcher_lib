@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.newbee.bulid_lib.mybase.activity.BaseCompatActivity;
+import com.newbee.bulid_lib.mybase.share.MyShare;
 import com.newbee.bulid_lib.util.myapp.MyAppUtils;
 import com.newbee.launcher_lib.R;
 
@@ -23,6 +24,7 @@ import com.newbee.launcher_lib.activity.launcher.type.NewBeeLauncherShowType;
 import com.newbee.launcher_lib.activity.launcher.util.BaseShowUtil;
 import com.newbee.launcher_lib.activity.launcher.util.ShowBrevityUtil;
 import com.newbee.launcher_lib.activity.launcher.util.ShowDazzleUtil;
+import com.newbee.launcher_lib.config.NowAllAppListConfig;
 import com.newbee.launcher_lib.manager.FirstStartNeedOpenManager;
 import com.newbee.launcher_lib.util.ActivityKeyDownListUtil;
 import com.newbee.launcher_lib.util.KeyCodesEventType;
@@ -46,7 +48,10 @@ public abstract class BaseNewBeeLauncherActivity extends BaseCompatActivity  {
     public abstract List<String> getNeedHidePckList();
     public abstract Map<String,Integer> getSortMap();
     public abstract Map<String,Integer> getSortFuzzyNameMap();
-
+    public abstract Map<String,String> getUsePckChangeNameMap();
+    public abstract Map<String,String> getUseNameChangeNameMap();
+    public abstract Map<String,String> getNameReplaceMap();
+    public abstract Map<String,Integer> getUsePckChangeIconMap();
 
 
     private boolean isFirstGetApps=true;
@@ -80,6 +85,10 @@ public abstract class BaseNewBeeLauncherActivity extends BaseCompatActivity  {
             switch (msgType) {
                 case INIT_LIST:
                     ResultSystemAppInfoBean initList= (ResultSystemAppInfoBean) msg.obj;
+                    if(null==initList||null==initList.getAppList()||initList.getAppList().size()==0){
+                        initList=new ResultSystemAppInfoBean();
+                    }
+                    NowAllAppListConfig.getInstance().setApps(initList.getAppList());
                     baseShowUtil.initData(initList);
                     break;
                 case SET_TV:
@@ -148,7 +157,7 @@ public abstract class BaseNewBeeLauncherActivity extends BaseCompatActivity  {
         keyEventUtil.setKeyCodesToDoEvent(KeyCodesEventType.QUE.ordinal(), ActivityKeyDownListUtil.queOk2());
         keyEventUtil.setKeyCodesToDoEvent(KeyCodesEventType.BACK.ordinal(), ActivityKeyDownListUtil.toBackList());
         PackageManagerSubscriptionSubject.getInstance().addObserver(packageManagerObserver);
-        PackageManagerUtil.getInstance().init(BaseNewBeeLauncherActivity.this,getNeedHidePckList(),getSortMap(),getSortFuzzyNameMap());
+        PackageManagerUtil.getInstance().init(BaseNewBeeLauncherActivity.this,getNeedHidePckList(),getSortMap(),getSortFuzzyNameMap(),getUsePckChangeNameMap(),getUseNameChangeNameMap(),getNameReplaceMap(), getUsePckChangeIconMap());
         PackageManagerUtil.getInstance().setReceiverGetAppList(true);
         appReceiverUtil.start(this);
         /**

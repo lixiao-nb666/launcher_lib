@@ -1,8 +1,12 @@
 package com.newbee.launcher.activity;
 
 
+import android.util.ArrayMap;
+
 import com.newbee.bulid_lib.util.myapp.MyAppUtils;
+import com.newbee.launcher.R;
 import com.newbee.launcher_lib.activity.launcher.BaseNewBeeLauncherActivity;
+import com.newbee.launcher_lib.app.BaseLauncherApp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,5 +59,37 @@ public class NewBeeLauncherActivity extends BaseNewBeeLauncherActivity {
         sortFuzzyNameMap.put("nrmyw",20);
         sortFuzzyNameMap.put("MyW",20);
         return sortFuzzyNameMap;
+    }
+
+    @Override
+    public Map<String, String> getUsePckChangeNameMap() {
+        Map<String,String> usePckChangeNameMap=new ArrayMap<>();
+        usePckChangeNameMap.put("cm.aptoidetv.pt",BaseLauncherApp.getRsString(com.newbee.launcher_lib.R.string.myw_app_store));
+        usePckChangeNameMap.put("com.opera.browser","Opera Browser");
+        usePckChangeNameMap.put("com.xiaobaifile.tv",BaseLauncherApp.getRsString(com.newbee.launcher_lib.R.string.myw_file));
+        return usePckChangeNameMap;
+    }
+
+    @Override
+    public Map<String, String> getUseNameChangeNameMap() {
+        return null;
+    }
+
+    @Override
+    public Map<String, String> getNameReplaceMap() {
+        Map<String,String> nameReplaceMap=new ArrayMap<>();//键值是名称中包含的字符串，V值是需要替换成的字符串
+        nameReplaceMap.put("TV","");
+        nameReplaceMap.put(" TV","");
+        nameReplaceMap.put("TV ","");
+        nameReplaceMap.put("MyW","aaaa");
+        return nameReplaceMap;
+    }
+
+    @Override
+    public Map<String, Integer> getUsePckChangeIconMap() {
+        Map<String,Integer> usePckChangeIconMap=new ArrayMap<>();
+        usePckChangeIconMap.put("cm.aptoidetv.pt", com.newbee.launcher_lib.R.drawable.icon_myw_store);
+        usePckChangeIconMap.put("com.xiaobaifile.tv", com.newbee.launcher_lib.R.drawable.icon_myw_file);
+        return usePckChangeIconMap;
     }
 }
