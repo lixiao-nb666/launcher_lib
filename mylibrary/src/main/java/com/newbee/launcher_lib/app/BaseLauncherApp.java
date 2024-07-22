@@ -8,6 +8,7 @@ import com.newbee.launcher_lib.BuildConfig;
 import com.newbee.launcher_lib.config.NowAllAppListConfig;
 import com.newbee.launcher_lib.util.CheckBuildGuideUtil;
 import com.newbee.launcher_lib.util.image.GetSystemIconUtil;
+import com.newbee.launcher_lib.util.system.AutoStratUtil;
 import com.newbee.system_applist_lib.systemapp.StartOtherApkUtil;
 
 
@@ -24,6 +25,7 @@ public abstract class BaseLauncherApp extends BaseApplication {
 
     @Override
     protected void init() {
+        selectBuildTypeToDo(BuildConfig.BUILD_TYPE);
         doOtherAppNeed();
         if(!CheckBuildGuideUtil.isRun()){
             if(!TextUtils.isEmpty(buildGuidePck())&&!TextUtils.isEmpty(buildGuideActivity())&&StartOtherApkUtil.getInstance().checkAppIsInstalled(getContext(),buildGuidePck())){
@@ -36,9 +38,7 @@ public abstract class BaseLauncherApp extends BaseApplication {
                 }
             }
         }
-        selectBuildTypeToDo(BuildConfig.BUILD_TYPE);
-
-
+        AutoStratUtil.getInstance().checkToStart(getApplicationContext());
     }
 
     @Override

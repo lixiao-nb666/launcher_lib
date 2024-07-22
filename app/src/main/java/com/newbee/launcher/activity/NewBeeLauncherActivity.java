@@ -92,4 +92,8 @@ public class NewBeeLauncherActivity extends BaseNewBeeLauncherActivity {
         usePckChangeIconMap.put("com.xiaobaifile.tv", com.newbee.launcher_lib.R.drawable.icon_myw_file);
         return usePckChangeIconMap;
     }
+
+
+
+
 }

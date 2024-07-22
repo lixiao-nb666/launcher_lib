@@ -81,6 +81,30 @@ public class GetSystemIconUtil {
         }catch (Exception e){}
     }
 
+
+    public void setAppIcon(ImageView showIV, SystemAppInfoBean appInfo){
+        try {
+
+            if(appInfo.getIconRs()==0||appInfo.getIconRs()==-1){
+                showIV.setImageDrawable(getIconFromPackageName(appInfo.getPakeageName()));
+            }else {
+                showIV.setImageResource(appInfo.getIconRs());
+            }
+//            if(pckStr.equals("cm.aptoidetv.pt")||appName.toLowerCase().contains("aptoide")){
+//                showIV.setImageResource(R.drawable.icon_myw_store);
+//                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_app_store));
+//            }else if(pckStr.equals("com.xiaobaifile.tv")){
+//
+//                showTV.setText(BaseLauncherApp.getRsString(R.string.myw_file));
+//            }else if(appName.equals("Opera")){
+//
+//                showTV.setText("Opera Browser");
+//            }else {
+//                showIV.setImageDrawable(getIconFromPackageName(pckStr));
+//            }
+        }catch (Exception e){}
+    }
+
 //    private String changeName(String name){
 //        if(name.contains(" TV")){
 //            return name.replace(" TV","");

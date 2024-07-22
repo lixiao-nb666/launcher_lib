@@ -6,12 +6,10 @@ import com.newbee.launcher_lib.app.BaseLauncherApp;
 public class NewBeeApp extends BaseLauncherApp {
     @Override
     public void doOtherAppNeed() {
-
     }
 
     @Override
     public void closeNeedDo() {
-
     }
 
     @Override
@@ -26,6 +24,5 @@ public class NewBeeApp extends BaseLauncherApp {
 
     @Override
     public void selectBuildTypeToDo(String buildType) {
-
     }
 }

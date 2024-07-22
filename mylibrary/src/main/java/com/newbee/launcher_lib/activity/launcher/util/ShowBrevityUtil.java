@@ -9,6 +9,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.newbee.launcher_lib.R;
+import com.newbee.launcher_lib.bean.BrevityIconBean;
+import com.newbee.launcher_lib.bean.BrevityIconType;
 import com.newbee.launcher_lib.share.NrmywShare;
 import com.newbee.launcher_lib.util.KeyCodesEventType;
 import com.newbee.launcher_lib.util.MyWStartUtil;
@@ -16,13 +18,16 @@ import com.newbee.launcher_lib.util.image.GetSystemIconUtil;
 import com.newbee.system_applist_lib.systemapp.bean.ResultSystemAppInfoBean;
 import com.newbee.system_applist_lib.systemapp.bean.SystemAppInfoBean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ShowBrevityUtil extends BaseShowUtil{
 
     private Context context;
     private RelativeLayout rl;
     private int index;
-    private ResultSystemAppInfoBean appList;
+    private List<BrevityIconBean> appList;
     private ImageView nowIV,leftIV,rightIV;
     private TextView nowTV,leftTV,rightTV;
     private LinearLayout leftLL,rightLL;
@@ -83,28 +88,39 @@ public class ShowBrevityUtil extends BaseShowUtil{
 
     @Override
     public void initData(ResultSystemAppInfoBean initList) {
-        if(null==initList||null==initList.getAppList()){
-            this.appList=new ResultSystemAppInfoBean();
-        }else {
-            this.appList=initList;
-        }
-        if(appList.getAppList().size()<=0){
+        getNeedData(initList);
+        if(appList.size()<=0){
             return;
         }
         index= NrmywShare.getInstance().getShowIndex();
         if(index<0){
             index=0;
         }
-        if(index>=appList.getAppList().size()){
-            index=appList.getAppList().size()-1;
+        if(index>=appList.size()){
+            index=appList.size()-1;
         }
         setShowContent();
+    }
+
+    private void getNeedData(ResultSystemAppInfoBean initList){
+        if(null==initList||null==initList.getAppList()){
+            this.appList=new ArrayList<>();
+        }else {
+            this.appList=new ArrayList<>();
+            for(SystemAppInfoBean systemAppInfoBean:initList.getAppList()){
+                BrevityIconBean brevityIconBean=new BrevityIconBean();
+                brevityIconBean.setIconType(BrevityIconType.Icon);
+                brevityIconBean.setSystemAppInfoBean(systemAppInfoBean);
+                this.appList.add(brevityIconBean);
+            }
+
+        }
     }
 
 
     @Override
     public void nowCanDoEvent(int eventTypeInt) {
-        if(null==appList||null==appList.getAppList()||appList.getAppList().size()<=0){
+        if(null==appList||appList.size()<=0){
             return;
         }
         KeyCodesEventType eventType = KeyCodesEventType.values()[eventTypeInt];
@@ -114,14 +130,14 @@ public class ShowBrevityUtil extends BaseShowUtil{
             case LEFT:
                 index--;
                 if (index < 0) {
-                    index = appList.getAppList().size() - 1;
+                    index = appList.size() - 1;
                 }
                 NrmywShare.getInstance().putShowIndex(index);
                 setShowContent();
                 break;
             case RIGHT:
                 index++;
-                if (index >= appList.getAppList().size()) {
+                if (index >= appList.size()) {
                     index = 0;
                 }
                 NrmywShare.getInstance().putShowIndex(index);
@@ -136,28 +152,38 @@ public class ShowBrevityUtil extends BaseShowUtil{
 
     private void nowSelect(){
         int nowIndex=index;
-        if(nowIndex<appList.getAppList().size()&&nowIndex>=0){
+        if(nowIndex<appList.size()&&nowIndex>=0){
             //处理中间的事件
-            SystemAppInfoBean nowApp=appList.getAppList().get(nowIndex);
-            MyWStartUtil.toOtherApk(context,nowApp.getPakeageName(),nowApp.getIndexActivityClass());
+            selectIndex(nowIndex);
         }
     }
 
     private void nowSelectLeft(){
         int leftIndex=index-1;
-        if(leftIndex<appList.getAppList().size()&&leftIndex>=0){
+        if(leftIndex<appList.size()&&leftIndex>=0){
             //处理中间的事件
-            SystemAppInfoBean nowApp=appList.getAppList().get(leftIndex);
-            MyWStartUtil.toOtherApk(context,nowApp.getPakeageName(),nowApp.getIndexActivityClass());
+            selectIndex(leftIndex);
         }
     }
 
     private void nowSelectRight(){
         int rightIndex=index+1;
-        if(rightIndex<appList.getAppList().size()&&rightIndex>=0){
+        if(rightIndex<appList.size()&&rightIndex>=0){
             //处理中间的事件
-            SystemAppInfoBean nowApp=appList.getAppList().get(rightIndex);
-            MyWStartUtil.toOtherApk(context,nowApp.getPakeageName(),nowApp.getIndexActivityClass());
+            selectIndex(rightIndex);
+        }
+    }
+    private void selectIndex(int needIndex){
+        BrevityIconBean brevityIconBean=appList.get(needIndex);
+        if(null==brevityIconBean){
+            return;
+        }
+        switch (brevityIconBean.getIconType()){
+            case Icon:
+                SystemAppInfoBean nowApp=brevityIconBean.getSystemAppInfoBean();
+                MyWStartUtil.toOtherApk(context,nowApp.getPakeageName(),nowApp.getIndexActivityClass());
+                break;
+
         }
     }
 
@@ -170,19 +196,19 @@ public class ShowBrevityUtil extends BaseShowUtil{
 
     private void showNow(){
         int nowIndex=index;
-        if(nowIndex<appList.getAppList().size()&&nowIndex>=0){
+        if(nowIndex<appList.size()&&nowIndex>=0){
             //处理中间的事件
-            SystemAppInfoBean nowApp=appList.getAppList().get(nowIndex);
+            BrevityIconBean nowApp=appList.get(nowIndex);
             setShowIVAndTv(nowIV,nowTV,nowApp);
         }
     }
     private void showLeft(){
         int leftIndex=index-1;
-        if(leftIndex<appList.getAppList().size()&&leftIndex>=0){
+        if(leftIndex<appList.size()&&leftIndex>=0){
             //处理左边的事件
             leftLL.setVisibility(View.VISIBLE);
             toLeftIV.setVisibility(View.VISIBLE);
-            SystemAppInfoBean leftApp=appList.getAppList().get(leftIndex);
+            BrevityIconBean leftApp=appList.get(leftIndex);
             setShowIVAndTv(leftIV,leftTV,leftApp);
         }else {
             leftLL.setVisibility(View.GONE);
@@ -192,11 +218,11 @@ public class ShowBrevityUtil extends BaseShowUtil{
 
     private void showRight(){
         int rightIndex=index+1;
-        if(rightIndex<appList.getAppList().size()&&rightIndex>=0){
+        if(rightIndex<appList.size()&&rightIndex>=0){
             //处理右边的事件
             rightLL.setVisibility(View.VISIBLE);
             toRightIV.setVisibility(View.VISIBLE);
-            SystemAppInfoBean rightApp=appList.getAppList().get(rightIndex);
+            BrevityIconBean rightApp=appList.get(rightIndex);
             setShowIVAndTv(rightIV,rightTV,rightApp);
         }else {
             rightLL.setVisibility(View.GONE);
@@ -204,16 +230,25 @@ public class ShowBrevityUtil extends BaseShowUtil{
         }
     }
 
-    private void setShowIVAndTv(ImageView showIV,TextView showTV,SystemAppInfoBean appInfo){
-        GetSystemIconUtil.getInstance().setAppIconAndName(showIV,showTV,appInfo);
+    private void setShowIVAndTv(ImageView showIV,TextView showTV,BrevityIconBean brevityIconBean){
+        if(null==brevityIconBean){
+            return;
+        }
+        switch (brevityIconBean.getIconType()){
+            case Icon:
+                GetSystemIconUtil.getInstance().setAppIconAndName(showIV,showTV,brevityIconBean.getSystemAppInfoBean());
+                break;
+        }
+
+
     }
 
     private void showPager(){
         int nowIndex=index;
-        if(nowIndex<appList.getAppList().size()&&nowIndex>=0){
+        if(nowIndex<appList.size()&&nowIndex>=0){
             //处理页面显示
             int showIndex=nowIndex+1;
-            pagerTV.setText(showIndex+"/"+appList.getAppList().size());
+            pagerTV.setText(showIndex+"/"+appList.size());
         }else {
             pagerTV.setText("");
         }
