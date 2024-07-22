@@ -1,9 +1,11 @@
 package com.newbee.launcher_lib.util.system;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.newbee.bulid_lib.util.TimeUtil;
 import com.newbee.gson_lib.gson.MyGson;
 import com.newbee.system_applist_lib.systemapp.StartOtherApkUtil;
 
@@ -12,7 +14,7 @@ public class AutoStratUtil {
 
     private static AutoStratUtil autoStratUtil;
     private final  String shareKey="StartDeviceAutoShareKey";
-
+    private final  String shareKeyTime="StartDeviceAutoShareKeyTime";
     private AutoStratUtil(){
 
     }
@@ -91,25 +93,44 @@ public class AutoStratUtil {
         if(isCheck){
             return;
         }
+        if(!checkNowTimeCanStart(context)){
+            return;
+        }
         isCheck=true;
         StartDeviceAutoApkBean startDeviceAutoApkBean=getShareAutoApk(context);
-        Log.i("kankanshenmeguiauto","kankanzhidebuauto:"+startDeviceAutoApkBean);
         if(null==startDeviceAutoApkBean||TextUtils.isEmpty(startDeviceAutoApkBean.getPckStr())){
             return;
         }
         if(!StartOtherApkUtil.getInstance().checkAppIsInstalled(context, startDeviceAutoApkBean.getPckStr())){
             //没安装也返回
-            Log.i("kankanshenmeguiauto","kankanzhidebuauto:111");
             return;
         }
-
         if(!TextUtils.isEmpty(startDeviceAutoApkBean.getClsStr())){
-            Log.i("kankanshenmeguiauto","kankanzhidebuauto:222");
             StartOtherApkUtil.getInstance().doStartApk(context,startDeviceAutoApkBean.getPckStr(),startDeviceAutoApkBean.getClsStr());
         }else {
-            Log.i("kankanshenmeguiauto","kankanzhidebuauto:333");
             StartOtherApkUtil.getInstance().doStartApplicationWithPackageName(context, startDeviceAutoApkBean.getPckStr());
         }
+    }
 
+    public boolean checkNowTimeCanStart(Context context){
+        String nowDeviceUpTimeStr=getNowDeviceUpTime();
+        String lastTimeStr=NrmywSystemUtil.getSystemSetting(context,shareKeyTime);
+        if(TextUtils.isEmpty(lastTimeStr)){
+            NrmywSystemUtil.putSystemSetting(context,shareKeyTime,nowDeviceUpTimeStr);
+            return true;
+        }
+        if(lastTimeStr.equals(nowDeviceUpTimeStr)){
+            return false;
+        }else {
+            NrmywSystemUtil.putSystemSetting(context,shareKeyTime,nowDeviceUpTimeStr);
+            return true;
+        }
+    }
+
+
+
+    public String getNowDeviceUpTime(){
+        long nowDeviceUpTime= System.currentTimeMillis() - SystemClock.elapsedRealtime();
+        return TimeUtil.getDateStr(nowDeviceUpTime);
     }
 }
