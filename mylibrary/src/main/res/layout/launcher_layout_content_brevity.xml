@@ -30,35 +30,36 @@
         android:alpha="0.9"
         android:src="@drawable/item_to_right"/>
 
-    <LinearLayout
+    <com.newbee.launcher_lib.view.icon.ShowIconView
+        android:id="@+id/giv_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"/>
 
-        <ImageView
-            android:id="@+id/iv_now"
-            android:layout_width="153px"
-            android:layout_height="153px"
-            android:scaleType="fitCenter"
-            android:background="@drawable/item_bj"
-            android:padding="10px"
-         />
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_now"-->
+<!--            android:layout_width="153px"-->
+<!--            android:layout_height="153px"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:background="@drawable/item_bj"-->
+<!--            android:padding="10px"-->
+<!--         />-->
 
-        <TextView
-            android:id="@+id/tv_now"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="19px"
-            android:textSize="18px"
-            android:textColor="@color/text_translation_over_color"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_now"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="19px"-->
+<!--            android:textSize="18px"-->
+<!--            android:textColor="@color/text_translation_over_color"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:id="@+id/ll_left"
+    <com.newbee.launcher_lib.view.icon.ShowIconView
+        android:id="@+id/giv_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -66,29 +67,29 @@
         android:alpha="0.65"
         android:layout_centerVertical="true"
         android:layout_marginLeft="120px"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"/>
 
-        <ImageView
-            android:id="@+id/iv_left"
-            android:layout_width="112px"
-            android:layout_height="112px"
-            android:scaleType="fitCenter"
-            android:background="@drawable/item_bj"
-            android:padding="8px"
-            />
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_left"-->
+<!--            android:layout_width="112px"-->
+<!--            android:layout_height="112px"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:background="@drawable/item_bj"-->
+<!--            android:padding="8px"-->
+<!--            />-->
 
-        <TextView
-            android:id="@+id/tv_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17px"
-            android:textSize="15px"
-            android:textColor="@color/text_translation_over_color"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_left"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="17px"-->
+<!--            android:textSize="15px"-->
+<!--            android:textColor="@color/text_translation_over_color"/>-->
 
-    </LinearLayout>
+<!--    </com.newbee.launcher_lib.view.icon.GroupIconView>-->
 
-    <LinearLayout
-        android:id="@+id/ll_right"
+    <com.newbee.launcher_lib.view.icon.ShowIconView
+        android:id="@+id/giv_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -96,26 +97,26 @@
         android:alpha="0.65"
         android:layout_marginRight="120px"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"/>
 
-        <ImageView
-            android:id="@+id/iv_right"
-            android:layout_width="112px"
-            android:layout_height="112px"
-            android:scaleType="fitCenter"
-            android:background="@drawable/item_bj"
-            android:padding="8px"
-            />
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_right"-->
+<!--            android:layout_width="112px"-->
+<!--            android:layout_height="112px"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:background="@drawable/item_bj"-->
+<!--            android:padding="8px"-->
+<!--            />-->
 
-        <TextView
-            android:id="@+id/tv_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17px"
-            android:textSize="15px"
-            android:textColor="@color/text_translation_over_color"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_right"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="17px"-->
+<!--            android:textSize="15px"-->
+<!--            android:textColor="@color/text_translation_over_color"/>-->
 
-    </LinearLayout>
+<!--    </com.newbee.launcher_lib.view.icon.GroupIconView>-->
 
 
     <TextView

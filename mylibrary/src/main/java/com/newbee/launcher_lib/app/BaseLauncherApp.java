@@ -20,7 +20,7 @@ public abstract class BaseLauncherApp extends BaseApplication {
     public abstract String buildGuidePck();
     public abstract String buildGuideActivity();
     public abstract void selectBuildTypeToDo(String buildType);
-
+    public abstract void setGroupPckList();
 
 
     @Override
@@ -39,6 +39,7 @@ public abstract class BaseLauncherApp extends BaseApplication {
             }
         }
         AutoStratUtil.getInstance().checkToStart(getApplicationContext());
+        setGroupPckList();
     }
 
     @Override

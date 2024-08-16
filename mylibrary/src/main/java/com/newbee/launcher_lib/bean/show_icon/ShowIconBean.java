@@ -1,28 +1,45 @@
-package com.newbee.launcher_lib.bean;
-
-import android.text.TextUtils;
+package com.newbee.launcher_lib.bean.show_icon;
 
 import com.newbee.system_applist_lib.systemapp.bean.ResultSystemAppInfoBean;
 import com.newbee.system_applist_lib.systemapp.bean.SystemAppInfoBean;
 
 import java.io.Serializable;
 
-public class BrevityIconBean implements Serializable {
-    private BrevityIconType iconType;
+public class ShowIconBean implements Serializable {
+    private ShowIconType iconType;
     private SystemAppInfoBean systemAppInfoBean;
     private ResultSystemAppInfoBean resultSystemAppInfoBean;
-    private String groupIconName;
+
+    private String iconName;
+    private int index;
 
 
-    public BrevityIconType getIconType() {
-        if(null==iconType){
-            iconType=BrevityIconType.none;
-        }
+
+
+    public ShowIconType getIconType() {
         return iconType;
     }
 
-    public void setIconType(BrevityIconType iconType) {
+    public void setIconType(ShowIconType iconType) {
         this.iconType = iconType;
+    }
+
+
+
+    public String getIconName() {
+        return iconName;
+    }
+
+    public void setIconName(String iconName) {
+        this.iconName = iconName;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public SystemAppInfoBean getSystemAppInfoBean() {
@@ -41,21 +58,14 @@ public class BrevityIconBean implements Serializable {
         this.resultSystemAppInfoBean = resultSystemAppInfoBean;
     }
 
-    public String getGroupIconName() {
-        return groupIconName;
-    }
-
-    public void setGroupIconName(String groupIconName) {
-        this.groupIconName = groupIconName;
-    }
-
     @Override
     public String toString() {
-        return "BrevityIconBean{" +
+        return "ShowIconBean{" +
                 "iconType=" + iconType +
                 ", systemAppInfoBean=" + systemAppInfoBean +
                 ", resultSystemAppInfoBean=" + resultSystemAppInfoBean +
-                ", groupIconName='" + groupIconName + '\'' +
+                ", iconName='" + iconName + '\'' +
+                ", index=" + index +
                 '}';
     }
 }

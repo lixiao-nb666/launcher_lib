@@ -7,6 +7,7 @@ import com.newbee.bulid_lib.util.myapp.MyAppUtils;
 import com.newbee.launcher.R;
 import com.newbee.launcher_lib.activity.launcher.BaseNewBeeLauncherActivity;
 import com.newbee.launcher_lib.app.BaseLauncherApp;
+import com.newbee.launcher_lib.bean.show_icon.ShowIconGroupUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,6 +83,7 @@ public class NewBeeLauncherActivity extends BaseNewBeeLauncherActivity {
         nameReplaceMap.put(" TV","");
         nameReplaceMap.put("TV ","");
         nameReplaceMap.put("MyW","aaaa");
+        nameReplaceMap.put("myw","aaaa");
         return nameReplaceMap;
     }
 

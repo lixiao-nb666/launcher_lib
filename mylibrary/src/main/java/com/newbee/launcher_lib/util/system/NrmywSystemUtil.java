@@ -2,6 +2,7 @@ package com.newbee.launcher_lib.util.system;
 
 import android.content.Context;
 import android.provider.Settings;
+import android.util.Log;
 
 import java.lang.reflect.Method;
 
@@ -13,6 +14,7 @@ public class NrmywSystemUtil {
             Method set = c.getMethod("set", String.class, String.class);
             set.invoke(c, key, value );
         } catch (Exception e) {
+            Log.i("kankanyichang","kankanyichang"+e.toString());
             e.printStackTrace();
         }
     }
@@ -53,16 +55,20 @@ public class NrmywSystemUtil {
 
     public static boolean putSystemSetting(Context context, String name, String value) {
         try {
+            Log.i("kankanyichang","kankanyichang11--"+name+"--"+value);
             return Settings.System.putString(context.getContentResolver(), name, value);
         } catch (Exception e) {
+            Log.i("kankanyichang","kankanyichang2--"+e.toString());
             e.printStackTrace();
         }
         return false;
     }
     public static String getSystemSetting(Context context, String name) {
         try {
+            Log.i("kankanyichang","kankanyichang3311--"+name);
             return Settings.System.getString(context.getContentResolver(), name);
         } catch (Exception e) {
+            Log.i("kankanyichang","kankanyichang33--"+e.toString());
             e.printStackTrace();
         }
         return "";

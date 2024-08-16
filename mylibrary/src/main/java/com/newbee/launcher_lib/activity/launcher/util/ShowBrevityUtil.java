@@ -2,19 +2,26 @@ package com.newbee.launcher_lib.activity.launcher.util;
 
 import android.content.Context;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.newbee.bulid_lib.mybase.activity.util.ActivityUtil;
+import com.newbee.gson_lib.gson.MyGson;
 import com.newbee.launcher_lib.R;
-import com.newbee.launcher_lib.bean.BrevityIconBean;
-import com.newbee.launcher_lib.bean.BrevityIconType;
+import com.newbee.launcher_lib.activity.applist.BaseGridAppListActivity;
+import com.newbee.launcher_lib.app.BaseLauncherApp;
+import com.newbee.launcher_lib.bean.show_icon.ShowIconBean;
+import com.newbee.launcher_lib.bean.show_icon.ShowIconGroupUtil;
+import com.newbee.launcher_lib.bean.show_icon.ShowIconType;
+import com.newbee.launcher_lib.bean.show_icon.ShowIconUtil;
 import com.newbee.launcher_lib.share.NrmywShare;
 import com.newbee.launcher_lib.util.KeyCodesEventType;
 import com.newbee.launcher_lib.util.MyWStartUtil;
-import com.newbee.launcher_lib.util.image.GetSystemIconUtil;
+import com.newbee.launcher_lib.view.icon.ShowIconView;
 import com.newbee.system_applist_lib.systemapp.bean.ResultSystemAppInfoBean;
 import com.newbee.system_applist_lib.systemapp.bean.SystemAppInfoBean;
 
@@ -27,43 +34,26 @@ public class ShowBrevityUtil extends BaseShowUtil{
     private Context context;
     private RelativeLayout rl;
     private int index;
-    private List<BrevityIconBean> appList;
-    private ImageView nowIV,leftIV,rightIV;
-    private TextView nowTV,leftTV,rightTV;
-    private LinearLayout leftLL,rightLL;
+    private List<ShowIconBean> appList;
+    private ShowIconView nowGIV,leftGIV,rightGIV;
+
     private ImageView toLeftIV,toRightIV;
     private TextView pagerTV;
 
     public ShowBrevityUtil(Context context, RelativeLayout rl){
         this.context=context;
         this.rl=rl;
-        nowIV=rl.findViewById(R.id.iv_now);
-        nowTV=rl.findViewById(R.id.tv_now);
-        nowIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nowSelect();
-            }
-        });
+        nowGIV=rl.findViewById(R.id.giv_now);
 
-        leftLL=rl.findViewById(R.id.ll_left);
-        leftIV=rl.findViewById(R.id.iv_left);
-        leftTV=rl.findViewById(R.id.tv_left);
-        leftIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nowSelectLeft();
-            }
-        });
-        rightLL=rl.findViewById(R.id.ll_right);
-        rightIV=rl.findViewById(R.id.iv_right);
-        rightTV=rl.findViewById(R.id.tv_right);
-        rightIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nowSelectRight();
-            }
-        });
+
+
+        leftGIV=rl.findViewById(R.id.giv_left);
+
+
+        rightGIV=rl.findViewById(R.id.giv_right);
+
+
+
         toLeftIV=rl.findViewById(R.id.iv_to_left);
         toLeftIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,11 +74,35 @@ public class ShowBrevityUtil extends BaseShowUtil{
     @Override
     public void initView(int w, int h) {
         rl.setVisibility(View.VISIBLE);
+
+        ShowIconView.MyListen nowListen=new ShowIconView.MyListen() {
+            @Override
+            public void nowIsClick() {
+                nowSelect();
+            }
+        };
+        nowGIV.init(nowListen,(int) (h/3.13f));
+
+        ShowIconView.MyListen leftListen=new ShowIconView.MyListen() {
+            @Override
+            public void nowIsClick() {
+                nowSelectLeft();
+            }
+        };
+        leftGIV.init(leftListen,(int) (h/4.28f));
+        ShowIconView.MyListen rightListen=new ShowIconView.MyListen() {
+            @Override
+            public void nowIsClick() {
+                nowSelectRight();
+            }
+        };
+        rightGIV.init(rightListen,(int) (h/4.28f));
+        pagerTV.setTextSize(h/30);
     }
 
     @Override
     public void initData(ResultSystemAppInfoBean initList) {
-        getNeedData(initList);
+        appList= ShowIconUtil. getNeedData(initList);
         if(appList.size()<=0){
             return;
         }
@@ -102,20 +116,7 @@ public class ShowBrevityUtil extends BaseShowUtil{
         setShowContent();
     }
 
-    private void getNeedData(ResultSystemAppInfoBean initList){
-        if(null==initList||null==initList.getAppList()){
-            this.appList=new ArrayList<>();
-        }else {
-            this.appList=new ArrayList<>();
-            for(SystemAppInfoBean systemAppInfoBean:initList.getAppList()){
-                BrevityIconBean brevityIconBean=new BrevityIconBean();
-                brevityIconBean.setIconType(BrevityIconType.Icon);
-                brevityIconBean.setSystemAppInfoBean(systemAppInfoBean);
-                this.appList.add(brevityIconBean);
-            }
 
-        }
-    }
 
 
     @Override
@@ -174,16 +175,19 @@ public class ShowBrevityUtil extends BaseShowUtil{
         }
     }
     private void selectIndex(int needIndex){
-        BrevityIconBean brevityIconBean=appList.get(needIndex);
-        if(null==brevityIconBean){
+        ShowIconBean showIconBean=appList.get(needIndex);
+        if(null==showIconBean||null==showIconBean.getIconType()){
             return;
         }
-        switch (brevityIconBean.getIconType()){
+        switch (showIconBean.getIconType()){
             case Icon:
-                SystemAppInfoBean nowApp=brevityIconBean.getSystemAppInfoBean();
+                SystemAppInfoBean nowApp= showIconBean.getSystemAppInfoBean();
                 MyWStartUtil.toOtherApk(context,nowApp.getPakeageName(),nowApp.getIndexActivityClass());
                 break;
-
+            case Group:
+                Log.i("kankandaozhelimei","kankandaozhelimei1----");
+                ActivityUtil.toActivity(context, BaseGridAppListActivity.class, MyGson.getInstance().toGsonStr(showIconBean));
+                break;
         }
     }
 
@@ -198,20 +202,22 @@ public class ShowBrevityUtil extends BaseShowUtil{
         int nowIndex=index;
         if(nowIndex<appList.size()&&nowIndex>=0){
             //处理中间的事件
-            BrevityIconBean nowApp=appList.get(nowIndex);
-            setShowIVAndTv(nowIV,nowTV,nowApp);
+            ShowIconBean nowApp=appList.get(nowIndex);
+            setShow(nowGIV,nowApp);
+
         }
     }
     private void showLeft(){
         int leftIndex=index-1;
         if(leftIndex<appList.size()&&leftIndex>=0){
             //处理左边的事件
-            leftLL.setVisibility(View.VISIBLE);
+            leftGIV.setVisibility(View.VISIBLE);
             toLeftIV.setVisibility(View.VISIBLE);
-            BrevityIconBean leftApp=appList.get(leftIndex);
-            setShowIVAndTv(leftIV,leftTV,leftApp);
+            ShowIconBean leftApp=appList.get(leftIndex);
+            setShow(leftGIV,leftApp);
+
         }else {
-            leftLL.setVisibility(View.GONE);
+            leftGIV.setVisibility(View.GONE);
             toLeftIV.setVisibility(View.GONE);
         }
     }
@@ -220,26 +226,21 @@ public class ShowBrevityUtil extends BaseShowUtil{
         int rightIndex=index+1;
         if(rightIndex<appList.size()&&rightIndex>=0){
             //处理右边的事件
-            rightLL.setVisibility(View.VISIBLE);
+            rightGIV.setVisibility(View.VISIBLE);
             toRightIV.setVisibility(View.VISIBLE);
-            BrevityIconBean rightApp=appList.get(rightIndex);
-            setShowIVAndTv(rightIV,rightTV,rightApp);
+            ShowIconBean rightApp=appList.get(rightIndex);
+            setShow(rightGIV,rightApp);
         }else {
-            rightLL.setVisibility(View.GONE);
+            rightGIV.setVisibility(View.GONE);
             toRightIV.setVisibility(View.GONE);
         }
     }
 
-    private void setShowIVAndTv(ImageView showIV,TextView showTV,BrevityIconBean brevityIconBean){
-        if(null==brevityIconBean){
+    private void setShow(ShowIconView showIconView,ShowIconBean showIconBean){
+        if(null==showIconView||null==showIconBean){
             return;
         }
-        switch (brevityIconBean.getIconType()){
-            case Icon:
-                GetSystemIconUtil.getInstance().setAppIconAndName(showIV,showTV,brevityIconBean.getSystemAppInfoBean());
-                break;
-        }
-
+        showIconView.setData(showIconBean);
 
     }
 

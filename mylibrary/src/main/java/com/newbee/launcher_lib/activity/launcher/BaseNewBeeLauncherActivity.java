@@ -54,6 +54,7 @@ public abstract class BaseNewBeeLauncherActivity extends BaseCompatActivity  {
     public abstract Map<String,Integer> getUsePckChangeIconMap();
 
 
+
     private boolean isFirstGetApps=true;
     private PackageManagerObserver packageManagerObserver = new PackageManagerObserver() {
         @Override
