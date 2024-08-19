@@ -9,24 +9,21 @@
     <FrameLayout
         android:id="@+id/fl_icon"
         android:layout_width="wrap_content"
+        android:background="@drawable/item_bj"
         android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_group_icon"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/item_bj"
             android:layout_gravity="center"
-            android:padding="8px"
             />
 
         <ImageView
             android:id="@+id/iv_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:background="@drawable/item_bj"
-            android:padding="8px" />
+            android:scaleType="fitCenter" />
 
 
 

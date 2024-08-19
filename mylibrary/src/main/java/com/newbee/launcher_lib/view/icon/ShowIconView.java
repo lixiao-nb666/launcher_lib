@@ -60,12 +60,15 @@ public class ShowIconView extends LinearLayout {
                                 recyclerView.setVisibility(VISIBLE);
                                 appNameTV.setText(showIconBean.getIconName());
                                 ResultSystemAppInfoBean resultSystemAppInfoBean=showIconBean.getResultSystemAppInfoBean();
+                                Log.i("kankanzahuishi","kankanxianshishenme:"+resultSystemAppInfoBean.getAppList());
                                 adapter.setData(resultSystemAppInfoBean.getAppList());
                                 break;
                         }
                         break;
                 }
-            }catch (Exception e){}
+            }catch (Exception e){
+                Log.i("kankanzahuishi","kankanxianshishenme:"+e.toString());
+            }
 
         }
     };
@@ -111,7 +114,7 @@ public class ShowIconView extends LinearLayout {
         iconFL.setPadding(paddingSize,paddingSize,paddingSize,paddingSize);
         float textSize=iconSize/7.4f;
         appNameTV.setTextSize(textSize);
-        adapter.setViewSize((int) (iconSize/4.5));
+        adapter.setViewSize((int) (iconSize/4.2));
         recyclerView.setAdapter(adapter);
         isInit=true;
         if(null!=lastBean){
@@ -151,6 +154,7 @@ public class ShowIconView extends LinearLayout {
         msg.what= ViewType.set_data.ordinal();
         msg.obj=showIconBean;
         viewHandler.sendMessage(msg);
+
     }
 
 

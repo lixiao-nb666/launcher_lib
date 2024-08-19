@@ -241,7 +241,6 @@ public class ShowBrevityUtil extends BaseShowUtil{
             return;
         }
         showIconView.setData(showIconBean);
-
     }
 
     private void showPager(){

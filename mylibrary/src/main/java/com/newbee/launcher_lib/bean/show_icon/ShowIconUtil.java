@@ -41,14 +41,13 @@ public class ShowIconUtil {
     private static ShowIconBean getNeedGroupShowIconBean(List<ShowIconBean> list,String groupStr,SystemAppInfoBean systemAppInfoBean){
         for(ShowIconBean showIconBean:list){
             if(null!=showIconBean&&null!=showIconBean.getIconType()&&showIconBean.getIconType()==ShowIconType.Group&&showIconBean.getIconName().equals(groupStr)){
-                list.remove(showIconBean);
                 ResultSystemAppInfoBean resultSystemAppInfoBean=showIconBean.getResultSystemAppInfoBean();
                 if(null==resultSystemAppInfoBean){
                     resultSystemAppInfoBean=new ResultSystemAppInfoBean();
                 }
                 resultSystemAppInfoBean.add(systemAppInfoBean);
                 showIconBean.setResultSystemAppInfoBean(resultSystemAppInfoBean);
-                return showIconBean;
+                return null;
             }
         }
         ShowIconBean showIconBean=new ShowIconBean();
@@ -57,7 +56,7 @@ public class ShowIconUtil {
         showIconBean.setIndex(systemAppInfoBean.getIndex());
         ResultSystemAppInfoBean resultSystemAppInfoBean=new ResultSystemAppInfoBean();
         resultSystemAppInfoBean.add(systemAppInfoBean);
-        resultSystemAppInfoBean.add(systemAppInfoBean);
+        showIconBean.setResultSystemAppInfoBean(resultSystemAppInfoBean);
         return showIconBean;
     }
 }

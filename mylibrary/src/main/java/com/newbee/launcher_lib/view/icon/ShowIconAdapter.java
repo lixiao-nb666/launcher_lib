@@ -93,9 +93,15 @@ public class ShowIconAdapter extends RecyclerView.Adapter {
             RecyclerView.LayoutParams lp= (RecyclerView.LayoutParams) itemView.getLayoutParams();
             lp.width=viewSize;
             lp.height=viewSize;
+            int paddingSize=viewSize/10;
+            lp.topMargin=paddingSize;
+            lp.bottomMargin=paddingSize;
+            lp.leftMargin=paddingSize;
+            lp.rightMargin=paddingSize;
             itemView.setLayoutParams(lp);
-            int paddingSize=viewSize/20;
-            itemView.setPadding(paddingSize,paddingSize,paddingSize,paddingSize);
+
+//
+//            itemView.setPadding(paddingSize,paddingSize,paddingSize,paddingSize);
             appIconIV=itemView.findViewById(R.id.iv_icon);
         }
     }
