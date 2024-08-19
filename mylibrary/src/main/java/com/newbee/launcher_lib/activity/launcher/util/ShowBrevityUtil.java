@@ -182,6 +182,7 @@ public class ShowBrevityUtil extends BaseShowUtil{
         switch (showIconBean.getIconType()){
             case Icon:
                 SystemAppInfoBean nowApp= showIconBean.getSystemAppInfoBean();
+                Log.i("kankandaozhelimei","kankandaozhelimei1----"+nowApp);
                 MyWStartUtil.toOtherApk(context,nowApp.getPakeageName(),nowApp.getIndexActivityClass());
                 break;
             case Group:

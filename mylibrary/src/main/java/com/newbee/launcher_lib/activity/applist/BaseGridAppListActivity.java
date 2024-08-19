@@ -46,7 +46,7 @@ public  class BaseGridAppListActivity extends BaseCompatActivity {
         groupNameTV=findViewById(R.id.tv_group_name);
         rv=findViewById(R.id.rv);
     }
-
+    private  int spanCount=5;
     @Override
     public void initData() {
         try {
@@ -59,7 +59,10 @@ public  class BaseGridAppListActivity extends BaseCompatActivity {
         }
         groupNameTV.setText(showIconBean.getIconName());
         adapter=new GridAppListAdapter(context,itemClick);
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(context,5);
+        if(showIconBean.getResultSystemAppInfoBean().getAppList().size()<5){
+            spanCount=showIconBean.getResultSystemAppInfoBean().getAppList().size();
+        }
+        GridLayoutManager gridLayoutManager=new GridLayoutManager(context,spanCount);
         rv.setLayoutManager(gridLayoutManager);
         rv.setAdapter(adapter);
 
@@ -82,7 +85,13 @@ public  class BaseGridAppListActivity extends BaseCompatActivity {
         super.getWAndH(w, h);
         try {
             groupNameTV.setTextSize(h/20);
-            adapter.setData(showIconBean.getResultSystemAppInfoBean().getAppList(),h/5);
+
+            if(spanCount>=3){
+                adapter.setData(showIconBean.getResultSystemAppInfoBean().getAppList(),h/spanCount);
+            }else {
+                adapter.setData(showIconBean.getResultSystemAppInfoBean().getAppList(),h/3);
+            }
+
         }catch (Exception e){}
 
     }
