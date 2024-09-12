@@ -19,9 +19,9 @@ public class ShowIconAdapter extends RecyclerView.Adapter {
     private final String tag = getClass().getName() + ">>>>";
     private List<SystemAppInfoBean> apps;
     private LayoutInflater layoutInflater;
-    private ItemClick itemClick;
+    private ShowIconViewItemClick itemClick;
 
-    public ShowIconAdapter(Context context, ItemClick itemClick) {
+    public ShowIconAdapter(Context context, ShowIconViewItemClick itemClick) {
         layoutInflater = LayoutInflater.from(context);
         this.itemClick = itemClick;
         this.apps = new ArrayList<>();
@@ -106,9 +106,7 @@ public class ShowIconAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public interface ItemClick {
-        void nowSelect(SystemAppInfoBean systemAppInfoBean);
-    }
+
 
 
 }

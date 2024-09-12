@@ -5,7 +5,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import com.newbee.bulid_lib.util.myapp.MyAppUtils;
-import com.newbee.launcher_lib.activity.applist.BaseRecentAppListActivity;
+import com.newbee.launcher_lib.activity.recent.BaseRecentAppListActivity;
 
 
 import java.util.ArrayList;

@@ -93,7 +93,7 @@ public class NrmywAdapter extends RecyclerView.Adapter {
 
         final ViewHodler viewHodler = (ViewHodler) holder;
         final SystemAppInfoBean app = apps.get(position);
-        GetSystemIconUtil.getInstance().setAppIconAndName(viewHodler.appIconIV,viewHodler.appNameTV,app);
+        GetSystemIconUtil.getInstance().setAppIconAndNameByAppList(viewHodler.appIconIV,viewHodler.appNameTV,app.getName(),app.getPakeageName());
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

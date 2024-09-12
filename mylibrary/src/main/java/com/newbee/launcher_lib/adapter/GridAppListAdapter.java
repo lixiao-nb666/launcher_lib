@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.newbee.launcher_lib.R;
 import com.newbee.launcher_lib.util.image.GetSystemIconUtil;
+import com.newbee.launcher_lib.view.icon.ShowIconByAppView;
+import com.newbee.launcher_lib.view.icon.ShowIconViewItemClick;
 import com.newbee.system_applist_lib.systemapp.bean.SystemAppInfoBean;
 
 import java.util.ArrayList;
@@ -22,9 +24,9 @@ public class GridAppListAdapter extends RecyclerView.Adapter {
     private final String tag = getClass().getName() + ">>>>";
     private List<SystemAppInfoBean> apps;
     private LayoutInflater layoutInflater;
-    private ItemClick itemClick;
+    private ShowIconViewItemClick itemClick;
 
-    public GridAppListAdapter(Context context, ItemClick itemClick) {
+    public GridAppListAdapter(Context context,ShowIconViewItemClick itemClick) {
         layoutInflater = LayoutInflater.from(context);
         this.itemClick = itemClick;
 
@@ -51,16 +53,7 @@ public class GridAppListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHodler viewHodler = (ViewHodler) holder;
         final SystemAppInfoBean app = apps.get(position);
-        GetSystemIconUtil.getInstance().setAppIconAndName(viewHodler.appIconIV,viewHodler.appNameTV,app);
-        if(null!=itemClick){
-            View.OnClickListener onClickListener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    itemClick.nowSelect(app);
-                }
-            };
-            viewHodler.appIconIV.setOnClickListener(onClickListener);
-        }
+        viewHodler.showIconByAppView.setData(itemClick,app);
 
     }
 
@@ -75,30 +68,16 @@ public class GridAppListAdapter extends RecyclerView.Adapter {
     class ViewHodler extends RecyclerView.ViewHolder {
 
 
-        private ImageView appIconIV;
-        private TextView appNameTV;
+        private ShowIconByAppView showIconByAppView;
 
         public ViewHodler(View itemView) {
             super(itemView);
-            appIconIV=itemView.findViewById(R.id.iv_icon);
-            appNameTV=itemView.findViewById(R.id.tv_app_name);
-            LinearLayout.LayoutParams lp= (LinearLayout.LayoutParams) appIconIV.getLayoutParams();
-            lp.leftMargin=viewSize/3;
-            lp.rightMargin=viewSize/3;
-            lp.topMargin=viewSize/2;
-            lp.bottomMargin= (int) (viewSize/6.5f);
-            lp.width=viewSize;
-            lp.height=viewSize;
-            int paddingSize=viewSize/14;
-            appIconIV.setPadding(paddingSize,paddingSize,paddingSize,paddingSize);
-            appIconIV.setLayoutParams(lp);
-            appNameTV.setTextSize(viewSize/7.4f);
+            showIconByAppView=itemView.findViewById(R.id.sibav);
+            showIconByAppView.init(viewSize);
         }
     }
 
-    public interface ItemClick {
-        void nowSelect(SystemAppInfoBean systemAppInfoBean);
-    }
+
 
 
 }

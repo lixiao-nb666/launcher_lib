@@ -1,4 +1,4 @@
-package com.newbee.launcher_lib.activity.applist;
+package com.newbee.launcher_lib.activity.recent;
 
 import android.os.Build;
 import android.view.KeyEvent;

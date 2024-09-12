@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.OrientationHelper;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.newbee.launcher_lib.R;
@@ -30,7 +30,7 @@ public class ShowIconView extends LinearLayout {
     private TextView appNameTV;
     private RecyclerView recyclerView;
     private ShowIconAdapter adapter;
-    private ShowIconAdapter.ItemClick itemClick=new ShowIconAdapter.ItemClick() {
+    private ShowIconViewItemClick itemClick=new ShowIconViewItemClick() {
         @Override
         public void nowSelect(SystemAppInfoBean systemAppInfoBean) {
             myListen.nowIsClick();
@@ -60,14 +60,14 @@ public class ShowIconView extends LinearLayout {
                                 recyclerView.setVisibility(VISIBLE);
                                 appNameTV.setText(showIconBean.getIconName());
                                 ResultSystemAppInfoBean resultSystemAppInfoBean=showIconBean.getResultSystemAppInfoBean();
-                                Log.i("kankanzahuishi","kankanxianshishenme:"+resultSystemAppInfoBean.getAppList());
+
                                 adapter.setData(resultSystemAppInfoBean.getAppList());
                                 break;
                         }
                         break;
                 }
             }catch (Exception e){
-                Log.i("kankanzahuishi","kankanxianshishenme:"+e.toString());
+
             }
 
         }

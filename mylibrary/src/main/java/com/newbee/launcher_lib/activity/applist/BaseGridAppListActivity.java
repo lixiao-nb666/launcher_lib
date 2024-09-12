@@ -14,6 +14,7 @@ import com.newbee.launcher_lib.R;
 import com.newbee.launcher_lib.adapter.GridAppListAdapter;
 import com.newbee.launcher_lib.bean.show_icon.ShowIconBean;
 import com.newbee.launcher_lib.util.MyWStartUtil;
+import com.newbee.launcher_lib.view.icon.ShowIconViewItemClick;
 import com.newbee.system_applist_lib.systemapp.bean.ResultSystemAppInfoBean;
 import com.newbee.system_applist_lib.systemapp.bean.SystemAppInfoBean;
 
@@ -24,14 +25,12 @@ public  class BaseGridAppListActivity extends BaseCompatActivity {
     private TextView groupNameTV;
     private RecyclerView rv;
     private GridAppListAdapter adapter;
-    private GridAppListAdapter.ItemClick itemClick=new GridAppListAdapter.ItemClick() {
+    private ShowIconViewItemClick itemClick=new ShowIconViewItemClick() {
         @Override
         public void nowSelect(SystemAppInfoBean nowApp) {
             try {
-
                 MyWStartUtil.toOtherApk(context,nowApp.getPakeageName(),nowApp.getIndexActivityClass());
             }catch (Exception e){}
-
         }
     };
 
@@ -85,7 +84,6 @@ public  class BaseGridAppListActivity extends BaseCompatActivity {
         super.getWAndH(w, h);
         try {
             groupNameTV.setTextSize(h/20);
-
             if(spanCount>=3){
                 adapter.setData(showIconBean.getResultSystemAppInfoBean().getAppList(),h/spanCount);
             }else {

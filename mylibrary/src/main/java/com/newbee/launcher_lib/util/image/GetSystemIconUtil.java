@@ -45,20 +45,16 @@ public class GetSystemIconUtil {
 //        try {
             SystemAppInfoBean appInfoBean= NowAllAppListConfig.getInstance().getNeedAppInfo(pck);
             if(null==appInfoBean){
-                Log.i("kankan","kankanshenmeyixhabng:111");
                 showTV.setText(appName);
                 showIV.setImageDrawable(getIconFromPackageName(pck));
             }else {
-                Log.i("kankan","kankanshenmeyixhabng:222"+appInfoBean);
                 setAppIconAndName(showIV,showTV,appInfoBean);
             }
-//        }catch (Exception e){
-//            Log.i("kankan","kankanshenmeyixhabng:"+e.toString());
-//        }
+
     }
 
 
-    public void setAppIconAndName(ImageView showIV, TextView showTV, SystemAppInfoBean appInfo){
+   private void setAppIconAndName(ImageView showIV, TextView showTV, SystemAppInfoBean appInfo){
         try {
             showTV.setText(appInfo.getName());
             if(appInfo.getIconRs()==0||appInfo.getIconRs()==-1){

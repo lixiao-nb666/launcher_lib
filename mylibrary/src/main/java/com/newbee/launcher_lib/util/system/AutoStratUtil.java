@@ -62,6 +62,7 @@ public class AutoStratUtil {
 
     public String getShareAutoApkPckStr(Context context){
         String shareStr=NrmywSystemUtil.getSystemSetting(context,shareKey);
+        Log.i("kankanzhelishishenme","kankanzhelishishenme11---"+shareStr);
         if(TextUtils.isEmpty(shareStr)){
             return "";
         }
@@ -76,6 +77,7 @@ public class AutoStratUtil {
 
     public String getShareAutoApkClsStr(Context context){
         String shareStr=NrmywSystemUtil.getSystemSetting(context,shareKey);
+        Log.i("kankanzhelishishenme","kankanzhelishishenme1---"+shareStr);
         if(TextUtils.isEmpty(shareStr)){
             return "";
         }

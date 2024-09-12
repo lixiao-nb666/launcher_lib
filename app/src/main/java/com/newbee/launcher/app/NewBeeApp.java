@@ -29,6 +29,12 @@ public class NewBeeApp extends BaseLauncherApp {
 
     @Override
     public void setGroupPckList() {
-
+//        ShowIconGroupUtil.getInstance().sharePck( "com.instagram.android","3");
+//        ShowIconGroupUtil.getInstance().sharePck("com.amazon.avod.thirdpartyclient","2");
+//
+//        ShowIconGroupUtil.getInstance().sharePck( "com.google.android.youtube.tv","2");
+//        ShowIconGroupUtil.getInstance().sharePck( "com.tiktok.tv","3");
+//        ShowIconGroupUtil.getInstance().sharePck( "com.nrmyw.share_screen","3");
+//        ShowIconGroupUtil.getInstance().sharePck( "com.android.settings","3");
     }
 }
