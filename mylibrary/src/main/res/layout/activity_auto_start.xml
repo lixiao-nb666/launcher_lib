@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_translation_over_color"
-            android:text="当前选择是:"/>
+            android:text="@string/auto_start_ts"/>
 
         <com.newbee.launcher_lib.view.icon.ShowIconByAppView
             android:id="@+id/siv_now"

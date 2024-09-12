@@ -15,4 +15,6 @@
     <string name="process">プロセスです</string>
 
     <string name="service">サービスです</string>
+
+    <string name="auto_start_ts">Boot from the boot :   </string>
 </resources>

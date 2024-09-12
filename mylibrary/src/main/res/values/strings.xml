@@ -13,4 +13,6 @@
     <string name="process">process</string>
 
     <string name="service">service</string>
+
+    <string name="auto_start_ts">Boot from the boot :   </string>
 </resources>

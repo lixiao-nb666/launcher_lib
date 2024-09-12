@@ -14,4 +14,7 @@
     <string name="process">进程</string>
 
     <string name="service">服务</string>
+
+    <string name="auto_start_ts">开机自启动为 :   </string>
+
 </resources>
